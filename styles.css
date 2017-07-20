@@ -1,0 +1,77 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.paste-area {
+    overflow-x: scroll;
+    font-size: 1.2rem;
+}
+
+.paste-area table {
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.paste-area table td {
+    min-width: 100px;
+    padding: 5px 10px;
+}
+
+.paste-area .LunchSpan {
+    width: auto;
+    padding: 0;
+    min-width: 30px;
+}
+
+.TimetableContent {
+  text-transform: uppercase;
+  color: grey;
+  background-color: #f9efa4;
+  cursor: pointer;
+}
+
+.TimetableContent.highlight {
+  color: black;
+  background-color: #CCFF33;
+  cursor: pointer;
+}
+
+.paste-area .table-bordered td,
+.paste-area .table-bordered th {
+  border: 1px solid #616161 !important;
+  vertical-align: middle;
+}
+
+
+.ColumnOneDays,
+.TheoryHours,
+.LabHours {
+    font-weight: bolder;
+}
+
+.ColumnOneDays {
+    background-color: #e2e2e2;
+}
+
+.TheoryHours {
+    background-color: #CCCCFF;
+}
+
+.LabHours {
+    background-color: #99CCFF;
+}
+
+.paste-area td div {
+  font-size: 1.1rem;
+}
+
