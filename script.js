@@ -23,6 +23,7 @@ app.listenForPaste = function listenForPaste() {
     d.addEventListener('paste', function(e) {
         var data = e.clipboardData.getData('text/html');
         e.preventDefault();
+        self.resetTable();
         self.parseData(data);
     });
 };
@@ -65,7 +66,7 @@ app.getSlots = function getSlots(tableHtml) {
 app.getSlotMapFromList = function getSlotMapFromList(list) {
     var k = this.k;
     var slotMap = {};
-    list.forEach(function(slotCell) {
+    [].forEach.call(list, function(slotCell) {
         var text = slotCell.textContent;
         var matches = text.match(k.SLOT_REGEX);
         var slot = matches[k.SLOT_REGEX_SLOT_IDX];
@@ -78,7 +79,7 @@ app.getSlotMapFromList = function getSlotMapFromList(list) {
 app.resetTable = function resetTable() {
     var te = this.k.TABLE_REF;
     var tds = te.querySelectorAll(".highlight");
-    tds.forEach(function (td) {
+    [].forEach.call(tds, function (td) {
         td.classList.remove('highlight');
         td.children[0].remove();
     });
