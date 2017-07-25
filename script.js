@@ -48,13 +48,11 @@ app.parseData = function parseData(data) {
         throw Error("Didn't find valid HTML in clipboard. Query for table returned " + Object.toString(t));
     }
 
-    console.log(t);
     this.fillTable(t);
 }
 
 app.fillTable = function fillTable(tableHtml) {
     var slots = this.getSlots(tableHtml);
-    console.log(slots);
 
     Object.keys(slots).forEach(function (slot) {
         var tds = d.querySelectorAll('.' + slot);
