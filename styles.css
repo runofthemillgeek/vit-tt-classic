@@ -10,7 +10,8 @@ html {
 body {
     font-size: 1.6rem;
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-    padding-bottom: 60px;
+    padding: 60px 0;
+    position: relative;
 }
 
 h1 {
@@ -44,6 +45,7 @@ kbd {
 
 .overview ol {
     list-style-position: inside;
+    padding: 0 20px;
 }
 
 .overview li + li {
@@ -165,6 +167,16 @@ footer a {
 
 footer a:hover {
     color: steelblue;
+}
+
+@media (max-width: 800px) {
+    .overview {
+        font-size: 1em;
+    }
+
+    .overview h1 {
+        font-size: 2em;
+    }
 }
 
 @media (max-width: 1600px) {
