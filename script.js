@@ -116,7 +116,8 @@ app.addDownloadButton = function addDownloadButton() {
     var button = document.createElement('a');
     button.textContent = "Download Image";
     button.className = 'download-button';
-    document.body.appendChild(button);
+    document.getElementsByClassName('download-area')[0]
+            .appendChild(button);
     
     html2canvas(t, {
         onrendered: function (canvas) {

@@ -118,3 +118,26 @@ kbd {
     font-size: 2rem;
     color: #333;
 }
+
+.download-area {
+    text-align: center;
+}
+
+.download-button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px 15px;
+    border: 3px solid steelblue;
+    color: steelblue;
+    background-color: #fff;
+    font-weight: bold;
+    font-size: 3rem;
+    border-radius: 5px;
+    transition: color 0.5s ease-out,
+                background-color 0.5s ease-out;
+}
+
+.download-button:hover {
+    background-color: steelblue;
+    color: #fff;
+}
