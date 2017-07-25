@@ -11,9 +11,7 @@ app.k = {
     SLOT_REGEX_CODE_IDX: 1,
     SLOT_REGEX_VENUE_IDX: 4,        
     TABLE_REF: d.getElementsByClassName('paste-area')[0],
-    USER_ERR_ELEMENT: d.getElementsByClassName('user-error-message')[0],
-    WIDTH: 1600,
-    HEIGHT: 500,
+    USER_ERR_ELEMENT: d.getElementsByClassName('user-error-message')[0]
 };
 
 app.init = function init() {
@@ -111,20 +109,27 @@ app.resetError = function resetError() {
 }
 
 app.addDownloadButton = function addDownloadButton() {
-    var t = this.k.TABLE_REF,
-        w = this.k.WIDTH;
+    var t = this.k.TABLE_REF.children[0],
+        p = t.parentElement;
 
     var button = document.createElement('a');
     button.textContent = "Download Image";
     button.className = 'download-button';
+
+    // Set table container's overflow to visible to prevent clipping
+    // when html2canvas is doing its thing.
+    p.classList.add('of-visible');
+
     document.getElementsByClassName('download-area')[0]
             .appendChild(button);
-    
+
     html2canvas(t, {
         onrendered: function (canvas) {
             button.href = canvas.toDataURL();
+            // Remove `visible` once screenshot is taken.
+            p.classList.remove('of-visible');
         },
-        width: w,
+        width: null,
         height: null,
     })
 }

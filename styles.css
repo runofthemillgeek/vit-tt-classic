@@ -52,6 +52,11 @@ kbd {
 .paste-area {
     overflow-x: auto;
     font-size: 1.4rem;
+    margin: 0 auto;
+}
+
+.of-visible {
+    overflow-x: visible !important;
 }
 
 .paste-area table {
@@ -140,4 +145,18 @@ kbd {
 .download-button:hover {
     background-color: steelblue;
     color: #fff;
+}
+
+@media (max-width: 1600px) {
+    .paste-area {
+        overflow-x: scroll;
+    }
+
+    .paste-area table {
+        margin: 0;
+    }
+
+    .paste-area table td {
+        min-width: 90px;
+    }
 }
