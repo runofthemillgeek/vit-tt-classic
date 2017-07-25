@@ -47,11 +47,13 @@ app.fillTable = function fillTable(tableHtml) {
     console.log(slots);
 
     Object.keys(slots).forEach(function (slot) {
-        var se = d.querySelector('.' + slot);
-        se.classList.add('highlight');
-        var div = d.createElement('div');
-        div.textContent = slots[slot];
-        se.appendChild(div);
+        var tds = d.querySelectorAll('.' + slot);
+        tds.forEach(function (td) {
+            td.classList.add('highlight');
+            var div = d.createElement('div');
+            div.textContent = slots[slot];
+            td.appendChild(div);
+        });
     });
 }
 
@@ -70,7 +72,8 @@ app.getSlotMapFromList = function getSlotMapFromList(list) {
         var text = slotCell.textContent;
         var matches = text.match(k.SLOT_REGEX);
         var slot = matches[k.SLOT_REGEX_SLOT_IDX];
-        slotMap[slot] = matches[k.SLOT_REGEX_CODE_IDX] + '-' + matches[k.SLOT_REGEX_VENUE_IDX];
+        if (!(slot in slotMap))
+            slotMap[slot] = matches[k.SLOT_REGEX_CODE_IDX] + '-' + matches[k.SLOT_REGEX_VENUE_IDX];
     });
 
     return slotMap;
