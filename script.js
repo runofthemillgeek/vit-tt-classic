@@ -28,6 +28,7 @@ app.listenForPaste = function listenForPaste() {
         e.preventDefault();
 
         self.resetTable();
+        self.removeDownloadButton();
         self.resetError();
 
         try {
@@ -112,7 +113,7 @@ app.resetError = function resetError() {
 app.addDownloadButton = function addDownloadButton() {
     var t = this.k.TABLE_REF,
         w = this.k.WIDTH;
-    
+
     var button = document.createElement('a');
     button.textContent = "Download Image";
     button.className = 'download-button';
@@ -130,9 +131,11 @@ app.addDownloadButton = function addDownloadButton() {
 
 app.removeDownloadButton = function removeDownloadButton() {
     var elem = document.getElementsByClassName('download-button')[0];
-    elem
-        .parentElement
-        .removeChild(elem);
+
+    if (elem)
+        elem
+            .parentElement
+            .removeChild(elem);
 }
 
 return app;
