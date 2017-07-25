@@ -20,6 +20,10 @@ h1 {
     margin: 0 auto;
 }
 
+.container > * + * {
+    margin-top: 40px;
+}
+
 .overview {
     text-align: center;
     font-size: 2rem;
@@ -109,3 +113,8 @@ kbd {
   font-size: 0.8em;
 }
 
+.user-error-message {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+}

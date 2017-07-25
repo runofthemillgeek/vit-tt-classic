@@ -10,7 +10,8 @@ app.k = {
     SLOT_REGEX_SLOT_IDX: 3,
     SLOT_REGEX_CODE_IDX: 1,
     SLOT_REGEX_VENUE_IDX: 4,        
-    TABLE_REF: d.getElementsByClassName('paste-area')[0]
+    TABLE_REF: d.getElementsByClassName('paste-area')[0],
+    USER_ERR_ELEMENT: d.getElementsByClassName('user-error-message')[0]
 };
 
 app.init = function init() {
@@ -23,8 +24,15 @@ app.listenForPaste = function listenForPaste() {
     d.addEventListener('paste', function(e) {
         var data = e.clipboardData.getData('text/html');
         e.preventDefault();
+
         self.resetTable();
-        self.parseData(data);
+        self.resetError();
+
+        try {
+            self.parseData(data);
+        } catch (e) {
+            self.error("Couldn't parse the copied text. Are you sure you copied the VTOP page?");
+        }
     });
 };
 
@@ -86,6 +94,16 @@ app.resetTable = function resetTable() {
         td.classList.remove('highlight');
         td.children[0].remove();
     });
+}
+
+app.error = function error(msg) {
+    var e = this.k.USER_ERR_ELEMENT;
+    e.textContent = msg;
+}
+
+app.resetError = function resetError() {
+    var e = this.k.USER_ERR_ELEMENT;
+    e.textContent = "";
 }
 
 return app;
