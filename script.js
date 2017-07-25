@@ -11,7 +11,9 @@ app.k = {
     SLOT_REGEX_CODE_IDX: 1,
     SLOT_REGEX_VENUE_IDX: 4,        
     TABLE_REF: d.getElementsByClassName('paste-area')[0],
-    USER_ERR_ELEMENT: d.getElementsByClassName('user-error-message')[0]
+    USER_ERR_ELEMENT: d.getElementsByClassName('user-error-message')[0],
+    WIDTH: 1600,
+    HEIGHT: 500,
 };
 
 app.init = function init() {
@@ -30,6 +32,7 @@ app.listenForPaste = function listenForPaste() {
 
         try {
             self.parseData(data);
+            self.addDownloadButton();
         } catch (e) {
             self.error("Couldn't parse the copied text. Are you sure you copied the VTOP page?");
         }
@@ -104,6 +107,31 @@ app.error = function error(msg) {
 app.resetError = function resetError() {
     var e = this.k.USER_ERR_ELEMENT;
     e.textContent = "";
+}
+
+app.addDownloadButton = function addDownloadButton() {
+    var t = this.k.TABLE_REF,
+        w = this.k.WIDTH;
+    
+    var button = document.createElement('a');
+    button.textContent = "Download Image";
+    button.className = 'download-button';
+    document.body.appendChild(button);
+    
+    html2canvas(t, {
+        onrendered: function (canvas) {
+            button.href = canvas.toDataURL();
+        },
+        width: w,
+        height: null,
+    })
+}
+
+app.removeDownloadButton = function removeDownloadButton() {
+    var elem = document.getElementsByClassName('download-button')[0];
+    elem
+        .parentElement
+        .removeChild(elem);
 }
 
 return app;
