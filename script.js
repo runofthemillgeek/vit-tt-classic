@@ -115,6 +115,8 @@ app.addDownloadButton = function addDownloadButton() {
     var button = document.createElement('a');
     button.textContent = "Download Image";
     button.className = 'download-button';
+    button.download = 'timetable.png';
+    button.target = '_blank';
 
     // Set table container's overflow to visible to prevent clipping
     // when html2canvas is doing its thing.
